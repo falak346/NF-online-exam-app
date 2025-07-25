@@ -4,4 +4,4 @@ from django.shortcuts import render, HttpResponse
 def home(request):
     return HttpResponse("Administrator HOME PAGE")
 def register(request):
-    return HttpResponse("welcome to registration")
+    return HttpResponse("do the changes appear?")
