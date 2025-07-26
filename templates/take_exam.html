@@ -1,0 +1,31 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Take Exam{% endblock %}
+{% block content %}
+<h2>Exam Questions</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {% for question in questions %}
+    <div class="mb-3">
+      <strong>{{ forloop.counter }}. {{ question.question_text }}</strong><br>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ question.opt1 }}" required>
+        <label class="form-check-label">{{ question.opt1 }}</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ question.opt2 }}">
+        <label class="form-check-label">{{ question.opt2 }}</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ question.opt3 }}">
+        <label class="form-check-label">{{ question.opt3 }}</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="{{ question.id }}" value="{{ question.opt4 }}">
+        <label class="form-check-label">{{ question.opt4 }}</label>
+      </div>
+    </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
