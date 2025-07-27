@@ -1,0 +1,21 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Select Login{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5" data-aos="zoom-in">
+  <h2 class="mb-4 fw-bold text-info">🔐 Choose Your Login Type</h2>
+
+  <div class="d-flex justify-content-center gap-4 flex-wrap">
+    <a href="{% url 'student_login' %}" class="btn btn-lg btn-info text-white px-5 py-3 fw-semibold shadow">
+      👩‍🎓 Student Login
+    </a>
+    <a href="{% url 'admin_login' %}" class="btn btn-lg btn-secondary px-5 py-3 fw-semibold shadow">
+      🛠️ Admin Login
+    </a>
+  </div>
+
+  <div class="mt-5">
+    <a href="{% url 'home' %}" class="btn btn-outline-dark">← Back to Home</a>
+  </div>
+</div>
+{% endblock %}

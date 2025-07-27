@@ -14,6 +14,21 @@ def student_login(request):
             return render(request, 'student_login.html', {'error': 'Invalid credentials'})
     return render(request, 'student_login.html')
 
+def student_signup(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        loginid = request.POST['loginid']
+        password = request.POST['password']
+
+        if Student.objects.filter(loginid=loginid).exists():
+            return render(request, 'student_signup.html', {'error': 'Login ID already exists.'})
+        
+        Student.objects.create(name=name, loginid=loginid, password=password)
+        return redirect('student_login')
+
+    return render(request, 'student_signup.html')
+
+
 def take_exam(request):
     questions = Question.objects.all()
     if request.method == 'POST':

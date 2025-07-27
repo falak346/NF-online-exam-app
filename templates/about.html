@@ -1,0 +1,21 @@
+{% extends 'sitemaster.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="container mt-5" data-aos="fade-up">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <img src="{% static 'images/images.jpg' %}" class="img-fluid rounded shadow" alt="About Exam System">
+    </div>
+    <div class="col-md-6">
+      <h2 class="fw-bold text-primary">About Our Online Exam System</h2>
+      <p class="mt-3">Our platform provides a secure, user-friendly, and efficient solution for conducting online exams. Whether you're a student or administrator, our system is built to make assessments simple and effective.</p>
+      <p>Features include real-time evaluation, intuitive interfaces, and automated result processing. Our mission is to empower learners and institutions with technology.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

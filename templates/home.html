@@ -1,9 +1,25 @@
 {% extends 'sitemaster.html' %}
 {% block title %}Home{% endblock %}
-{% block content %}
-<h2>Welcome to the Online Examination System</h2>
-<p><a class="btn btn-primary" href="/login/">Student Login</a>
-   <a class="btn btn-dark" href="/admin_panel/login/">Admin Login</a></p>
-<p>Template loaded successfully.</p>
 
+{% block content %}
+<div class="container mt-5 text-center" data-aos="zoom-in">
+  <h2 class="mb-4 display-5 fw-bold text-primary">
+    🎓 Welcome to the <span class="text-gradient">Online Examination System</span>
+  </h2>
+
+  <p class="lead mb-4 text-dark">Please choose an option to continue:</p>
+
+  <div class="d-flex justify-content-center gap-4 mt-4 flex-wrap">
+    <a class="btn btn-lg btn-outline-success px-5 py-3 fw-semibold shadow" href="/select_login/">
+      🔐 Login
+    </a>
+    <a class="btn btn-lg btn-outline-warning text-dark px-5 py-3 fw-semibold shadow" href="/select_signup/">
+      📝 Signup
+    </a>
+  </div>
+
+  <div class="mt-5 alert alert-info shadow-sm" role="alert" data-aos="fade-up">
+    🚀 Ready to start your journey. Let's go!
+  </div>
+</div>
 {% endblock %}

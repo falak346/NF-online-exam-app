@@ -1,0 +1,21 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Select Signup{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5" data-aos="zoom-in">
+  <h2 class="mb-4 fw-bold text-success">📝 Choose Your Signup Type</h2>
+
+  <div class="d-flex justify-content-center gap-4 flex-wrap">
+    <a href="/student/signup/" class="btn btn-lg btn-success px-5 py-3 fw-semibold shadow">
+      👩‍🎓 Student Signup
+    </a>
+    <a href="/admin_panel/signup/" class="btn btn-lg btn-warning text-dark px-5 py-3 fw-semibold shadow">
+      🛠️ Admin Signup
+    </a>
+  </div>
+
+  <div class="mt-5">
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary">← Back to Home</a>
+  </div>
+</div>
+{% endblock %}

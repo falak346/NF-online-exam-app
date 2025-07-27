@@ -1,0 +1,29 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Admin Signup{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🛠️ Admin Signup</h2>
+
+  {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" class="mx-auto" style="max-width: 500px;">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Login ID</label>
+      <input type="text" class="form-control" name="loginid" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+  </form>
+</div>
+{% endblock %}
