@@ -35,6 +35,10 @@ def take_exam(request):
     return render(request, 'take_exam.html', {'questions': questions})
 
 def view_result(request):
-    student = Student.objects.get(id=request.session['student_id'])
+    student_id = request.session.get('student_id')
+    if not student_id:
+        return redirect('student_login')
+
+    student = Student.objects.get(id=student_id)
     results = ExamResult.objects.filter(student=student)
     return render(request, 'result.html', {'results': results})
