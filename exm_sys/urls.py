@@ -16,12 +16,34 @@ Including another URLconf
 """
 
 
+# from django.contrib import admin
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('admin_panel/', include('administrator.urls')),
+#     path('', include('student.urls')),
+#     path('exam/', include('exam.urls')),
+# ]
+
+
+
+# from django.contrib import admin
+# from django.urls import path, include
+# from administrator import views as administrator_views  # or whichever app has the view
 from django.contrib import admin
 from django.urls import path, include
+from administrator import views as admin_views
+from student import views as student_views
+
 
 urlpatterns = [
+    path('', admin_views.home, name='home'),  # 👈 Fixes "Page Not Found at /"
     path('admin/', admin.site.urls),
     path('admin_panel/', include('administrator.urls')),
-    path('', include('student.urls')),
-    path('exam/', include('exam.urls')),
+
+    # These are direct views, so no need to include student.urls
+    path('login/', student_views.student_login, name='student_login'),
+    path('exam/', student_views.take_exam, name='take_exam'),
+    path('result/', student_views.view_result, name='view_result'),
 ]
