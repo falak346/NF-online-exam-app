@@ -2,6 +2,7 @@ from django.db import models
 from exam.models import Subject
 
 class Student(models.Model):
+    name = models.CharField(max_length=100)
     enroll = models.CharField(max_length=20)
     loginid = models.CharField(max_length=50)
     password = models.CharField(max_length=50)

@@ -25,8 +25,8 @@ def student_signup(request):
         
         Student.objects.create(name=name, loginid=loginid, password=password)
         return redirect('student_login')
-
-    return render(request, 'student_signup.html')
+    else:
+        return render(request, 'student_signup.html')
 
 
 def take_exam(request):
