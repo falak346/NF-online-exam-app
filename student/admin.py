@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Student, ExamResult
+from .models import Student
+# from exam.models import ExamResult
+
+
 
 admin.site.register(Student)
-admin.site.register(ExamResult)
+# admin.site.register(ExamResult)
+
+

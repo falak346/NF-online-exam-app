@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # Optional test view just to avoid the error
-    path('test/', views.test_exam_view, name='test_exam'),
+    path('leaderboard/public/<str:exam_id>/', views.public_leaderboard, name='public_leaderboard'),
+    path('leaderboard/assigned/<str:exam_id>/', views.assigned_leaderboard, name='assigned_leaderboard'),
 ]
