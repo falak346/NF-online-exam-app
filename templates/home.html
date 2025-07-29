@@ -1,25 +1,121 @@
-{% extends 'sitemaster.html' %}
-{% block title %}Home{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Exam</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-{% block content %}
-<div class="container mt-5 text-center" data-aos="zoom-in">
-  <h2 class="mb-4 display-5 fw-bold text-primary">
-    🎓 Welcome to the <span class="text-gradient">Online Examination System</span>
-  </h2>
+  <style>
+    body {
+      background-image: url("{% static 'images/background.jpg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 60px;
+      border-radius: 15px;
+      margin-top: 120px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .btn-custom {
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .card {
+      padding: 20px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .section-title {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .nav-link {
+      margin-left: 15px;
+      padding: 8px 18px;
+      border-radius: 25px;
+      background-color: #f8f9fa;
+      transition: background-color 0.3s ease;
+    }
+    .nav-link:hover {
+      background-color: #e2e6ea;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .highlight {
+      color: #007BFF;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="#">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+        Online Exam
+      </a>
+      <div>
+        <a class="nav-link d-inline text-dark" href="#home">Home</a>
+        <a class="nav-link d-inline text-dark" href="#about">About Us</a>
+        <a class="nav-link d-inline text-dark" href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </nav>
 
-  <p class="lead mb-4 text-dark">Please choose an option to continue:</p>
-
-  <div class="d-flex justify-content-center gap-4 mt-4 flex-wrap">
-    <a class="btn btn-lg btn-outline-success px-5 py-3 fw-semibold shadow" href="/select_login/">
-      🔐 Login
-    </a>
-    <a class="btn btn-lg btn-outline-warning text-dark px-5 py-3 fw-semibold shadow" href="/select_signup/">
-      📝 Signup
-    </a>
+  <!-- Hero Content -->
+  <div class="container overlay text-center" id="home">
+    <h1 class="display-5 fw-bold">Welcome to Online Exam</h1>
+    <p class="lead">Select an option to continue</p>
+    <a href="{% url 'select_login' %}" class="btn btn-primary btn-custom m-2">Login</a>
+    <a href="{% url 'select_signup' %}" class="btn btn-outline-primary btn-custom m-2">Signup</a>
   </div>
 
-  <div class="mt-5 alert alert-info shadow-sm" role="alert" data-aos="fade-up">
-    🚀 Ready to start your journey. Let's go!
+  <!-- Review Cards -->
+  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4"><div class="card">"Excellent platform!"</div></div>
+      <div class="col-md-4"><div class="card">"User-friendly interface!"</div></div>
+      <div class="col-md-4"><div class="card">"Smooth exam experience!"</div></div>
+      <div class="col-md-6"><div class="card">"Loved the leaderboard feature."</div></div>
+      <div class="col-md-6"><div class="card">"Great for both students and teachers."</div></div>
+    </div>
   </div>
-</div>
-{% endblock %}
+
+  <!-- About Us Section -->
+  <div id="about" class="container my-5">
+    <h2 class="section-title">About Us</h2>
+    <p>Online Exam is a modern platform designed to transform the way educational assessments are conducted. Whether you're an educator creating structured, timed assessments or a student preparing for academic challenges, our platform ensures a smooth, reliable, and interactive testing experience. We combine the latest web technologies with an intuitive user interface to make online exams simple, secure, and effective.</p>
+  </div>
+
+  <!-- Contact Us Section -->
+  <div id="contact" class="container my-5">
+    <h2 class="section-title">Contact Us</h2>
+    <p><span class="highlight">Email:</span> support@onlineexam.com</p>
+    <p><span class="highlight">Phone 1:</span> +91-9876543210</p>
+    <p><span class="highlight">Phone 2:</span> +91-9123456789</p>
+    <p>Address: 123 Knowledge Street, Learning City, EduState 456789</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center bg-dark text-white py-4 mt-5">
+    &copy; 2025 Online Exam. All rights reserved.
+  </footer>
+</body>
+</html>
