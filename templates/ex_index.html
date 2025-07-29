@@ -1,0 +1,30 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Dashboard - Examiner{% endblock %}
+{% block content %}
+<h2 class="fw-bold mb-4">Welcome, {{ examiner.name }}</h2>
+<div class="row">
+  <div class="col-md-3">
+    <!-- Sidebar -->
+    <div class="list-group shadow-sm">
+      <a href="/examiner/new_exam/" class="list-group-item list-group-item-action">Create Exam</a>
+      <a href="/examiner/exams/" class="list-group-item list-group-item-action">Created Exams</a>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <h4>Your Batches</h4>
+    <div class="row">
+      {% for batch in batches %}
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ batch.name }}</h5>
+            <p class="card-text">Batch ID: {{ batch.batch_id }}</p>
+            <a href="/examiner/batch/{{ batch.batch_id }}/" class="btn btn-outline-primary btn-sm">Manage</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

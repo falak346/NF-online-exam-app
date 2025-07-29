@@ -1,0 +1,32 @@
+<!-- leaderboard_public.html -->
+{% extends 'sitemaster.html' %}
+{% block title %}Leaderboard - {{ exam.exam_id }}{% endblock %}
+{% block content %}
+<h2 class="mb-4">Leaderboard for {{ exam.subject }}</h2>
+<div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in results %}
+      <tr id="rank{{ forloop.counter }}" class="{% if entry.student.id == highlight_id %}table-success{% endif %}">
+        <td>{{ forloop.counter }}</td>
+        <td>{{ entry.student.name }}</td>
+        <td>{{ entry.student.loginid }}</td>
+        <td>{{ entry.marks }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script>
+  const highlighted = document.querySelector('.table-success');
+  if (highlighted) highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+</script>
+{% endblock %}

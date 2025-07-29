@@ -1,16 +1,9 @@
 {% extends 'sitemaster.html' %}
-{% block title %}Select Signup{% endblock %}
-
+{% block title %}Signup - Online Exam{% endblock %}
 {% block content %}
-<div class="text-center" data-aos="fade-up">
-  <h2 class="mb-4 display-6 fw-bold text-success">📝 Choose Your Signup Type</h2>
-  <div class="d-flex justify-content-center gap-4 flex-wrap mt-4">
-    <a href="{% url 'student_signup' %}" class="btn btn-outline-success btn-lg px-5 py-3 rounded-pill fw-semibold shadow">
-      👩‍🎓 Student Signup
-    </a>
-    <a href="/admin_panel/signup/" class="btn btn-outline-warning text-dark btn-lg px-5 py-3 rounded-pill fw-semibold shadow">
-      🛠️ Admin Signup
-    </a>
-  </div>
+<div class="text-center my-5">
+  <h2 class="fw-bold mb-4">Signup As</h2>
+  <a href="/student/signup/" class="btn btn-primary btn-rounded m-2">Student Signup</a>
+  <a href="/examiner/signup/" class="btn btn-outline-primary btn-rounded m-2">Examiner Signup</a>
 </div>
 {% endblock %}

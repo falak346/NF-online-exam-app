@@ -1,16 +1,9 @@
 {% extends 'sitemaster.html' %}
-{% block title %}Select Login{% endblock %}
-
+{% block title %}Login - Online Exam{% endblock %}
 {% block content %}
-<div class="text-center" data-aos="fade-up">
-  <h2 class="mb-4 display-6 fw-bold text-primary">🔐 Choose Your Login Portal</h2>
-  <div class="d-flex justify-content-center gap-4 flex-wrap mt-4">
-    <a href="{% url 'student_login' %}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill fw-semibold shadow">
-      👩‍🎓 Student Login
-    </a>
-    <a href="/admin_panel/login/" class="btn btn-outline-dark btn-lg px-5 py-3 rounded-pill fw-semibold shadow">
-      🛠️ Admin Login
-    </a>
-  </div>
+<div class="text-center my-5">
+  <h2 class="fw-bold mb-4">Login As</h2>
+  <a href="/student/login/" class="btn btn-primary btn-rounded m-2">Student Login</a>
+  <a href="/examiner/login/" class="btn btn-outline-primary btn-rounded m-2">Examiner Login</a>
 </div>
 {% endblock %}

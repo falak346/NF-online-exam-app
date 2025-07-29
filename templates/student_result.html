@@ -1,0 +1,15 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Exam Result{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h3 class="card-title">Exam Result</h3>
+    <p><strong>Subject:</strong> {{ result.exam.subject }}</p>
+    <p><strong>Exam ID:</strong> {{ result.exam.exam_id }}</p>
+    <p><strong>Marks Scored:</strong> {{ result.marks }} / {{ result.total_questions }}</p>
+    <p><strong>Date:</strong> {{ result.submitted_at|date:"F d, Y H:i" }}</p>
+    <a href="{% url 'public_leaderboard' result.exam.exam_id %}#rank{{ result.rank }}" class="btn btn-outline-info mt-3">View Leaderboard</a>
+  </div>
+</div>
+{% endblock %}
+
