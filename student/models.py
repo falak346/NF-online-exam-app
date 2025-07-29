@@ -1,22 +1,22 @@
 from django.db import models
-from exam.models import Subject
+# from exam.models import Subject
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
-    enroll = models.CharField(max_length=20)
-    loginid = models.CharField(max_length=50)
+    enroll = models.CharField(max_length=20, unique=True)
+    loginid = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=50)
     email = models.EmailField()
     contact = models.CharField(max_length=15)
+    profile_image = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+
 
     def __str__(self):
         return self.loginid
 
-class ExamResult(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    totalmarks = models.IntegerField()
-    totalquestion = models.IntegerField()
 
-    def __str__(self):
-        return f"{self.student.loginid} - {self.subject.subname}"
+
+
+
+
+

@@ -35,18 +35,25 @@ from django.contrib import admin
 from django.urls import path, include
 from administrator import views as admin_views
 from student import views as student_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', admin_views.home, name='home'),  # 👈 Fixes "Page Not Found at /"
     path('admin/', admin.site.urls),
     path('admin_panel/', include('administrator.urls')),
     path('student/', include('student.urls')),
-    # These are direct views, so no need to include student.urls
     path('login/', student_views.student_login, name='student_login'),
-    path('exam/', student_views.take_exam, name='take_exam'),
-    path('result/', student_views.view_result, name='view_result'),
+    path('exam/', student_views.attempt_exam, name='attempt_exam'),
+    path('result/', student_views.student_result, name='student_result'),
     path('select_login/', admin_views.select_login, name='select_login'),
     path('select_signup/', admin_views.select_signup, name='select_signup'),
     path('about/', admin_views.about_us, name='about'),
+    path('exam/', include('exam.urls')),
+
 ]
+
+# ✅ Add this at the end
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
