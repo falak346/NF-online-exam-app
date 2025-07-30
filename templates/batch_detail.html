@@ -1,0 +1,40 @@
+<!-- batch_detail.html -->
+{% extends 'sitemaster.html' %}
+{% block title %}Batch - {{ batch.name }}{% endblock %}
+{% block content %}
+<div class="card shadow-sm mb-4">
+  <div class="card-body d-flex align-items-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/167/167707.png" width="60" class="me-4" alt="Batch Image">
+    <div>
+      <h4 class="mb-1">{{ batch.name }}</h4>
+      <p class="mb-0">Batch ID: {{ batch.batch_id }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h5 class="card-title">Students in this Batch</h5>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Enroll ID</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in students %}
+        <tr>
+          <td>{{ m.student.name }}</td>
+          <td>{{ m.student.enroll }}</td>
+          <td>{{ m.student.loginid }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3" class="text-center">No students enrolled yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

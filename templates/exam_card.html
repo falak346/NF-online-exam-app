@@ -1,0 +1,61 @@
+{% extends 'sitemaster.html' %}
+{% block title %}Exam Overview{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <!-- Exam Summary -->
+    <div class="card mb-4 shadow-sm">
+      <img src="https://cdn-icons-png.flaticon.com/512/2989/2989842.png" class="card-img-top" alt="Exam Image">
+      <div class="card-body">
+        <h4 class="card-title">{{ Exam.subject }}</h4>
+        <p><strong>Exam ID:</strong> {{ Exam.exam_id }}</p>
+        <p><strong>Time Limit:</strong> {{ Exam.time_limit }}</p>
+        <p><strong>Available From:</strong> {{ Exam.start_date }}</p>
+        <p><strong>Until:</strong> {{ Exam.end_date }}</p>
+        <a href="/student/exam/" {{ Exam.exam_id }}/take/" class="btn btn-primary w-100 mt-3">Take Exam</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <!-- Instructions and Leaderboard -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Instructions</h5>
+        <p>{{ exam.instructions }}</p>
+      </div>
+    </div>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Leaderboard</h5>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+          <table class="table table-sm table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for entry in leaderboard %}
+              <tr id="rank{{ forloop.counter }}" class="{% if entry.student.id == highlight_id %}table-primary{% endif %}">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ entry.student.name }}</td>
+                <td>{{ entry.student.loginid }}</td>
+                <td>{{ entry.marks }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const highlighted = document.querySelector('.table-primary');
+  if (highlighted) highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+</script>
+{% endblock %}

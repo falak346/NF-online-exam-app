@@ -9,20 +9,20 @@
       <a href="/student/open_exam/" class="list-group-item list-group-item-action">Open Exams</a>
       <a href="/student/assigned_exam/" class="list-group-item list-group-item-action">Assigned Exams</a>
       <a href="/student/result/" class="list-group-item list-group-item-action">Results</a>
-      <a href="/student/enroll/" class="list-group-item list-group-item-action">Enroll</a>
+      <a href="#" class="list-group-item list-group-item-action">Enroll</a>
     </div>
   </div>
   <div class="col-md-9">
     <!-- Main Dashboard Content -->
     <h4>Upcoming Open Exams</h4>
     <div class="row">
-      {% for exam in exams %}
+      {% for Exam in Exams %}
       <div class="col-md-6 mb-4">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h5 class="card-title">{{ exam.subject }}</h5>
-            <p class="card-text">Exam ID: {{ exam.exam_id }}</p>
-            <a href="/student/exam/{{ exam.exam_id }}/" class="btn btn-outline-primary btn-sm">Take Exam</a>
+            <h5 class="card-title">{{ Exam.subject }}</h5>
+            <p class="card-text">Exam ID: {{ Exam.exam_id }}</p>
+            <a href="/student/exam/"{{ Exam.exam_id }}/" class="btn btn-outline-primary btn-sm">Take Exam</a>
           </div>
         </div>
       </div>
