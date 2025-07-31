@@ -41,7 +41,7 @@ urlpatterns = [
     path('', admin_views.home, name='home'),  # 👈 Fixes "Page Not Found at /"
     path('admin/', admin.site.urls),
     path('admin_panel/', include('administrator.urls')),
-
+    path('student/', include('student.urls')),
     # These are direct views, so no need to include student.urls
     path('login/', student_views.student_login, name='student_login'),
     path('exam/', student_views.take_exam, name='take_exam'),

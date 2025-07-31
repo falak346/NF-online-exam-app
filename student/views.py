@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Student, ExamResult
 from exam.models import Question, Subject
 
+
 def student_login(request):
     if request.method == 'POST':
         loginid = request.POST['loginid']
@@ -13,6 +14,22 @@ def student_login(request):
         else:
             return render(request, 'student_login.html', {'error': 'Invalid credentials'})
     return render(request, 'student_login.html')
+
+def student_signup(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        enroll = request.POST['enroll']
+        loginid = request.POST['loginid']
+        password = request.POST['password']
+        email = request.POST['email']
+        contact = request.POST['contact']
+
+        if Student.objects.filter(loginid=loginid).exists():
+            return render(request, 'student_signup.html', {'error': 'Login ID already exists.'})
+
+        Student.objects.create(name=name, enroll=enroll, loginid=loginid, password=password, email=email, contact=contact)
+        return redirect('student_login')
+    return render(request, 'student_signup.html')
 
 def take_exam(request):
     questions = Question.objects.all()
